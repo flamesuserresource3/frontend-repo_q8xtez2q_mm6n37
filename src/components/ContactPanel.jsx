@@ -25,9 +25,12 @@ export default function ContactPanel() {
       whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="relative rounded-2xl border border-fuchsia-400/25 bg-gradient-to-br from-fuchsia-400/20 to-cyan-400/10 p-6 backdrop-blur-xl md:p-10"
+      className="group relative overflow-hidden rounded-2xl border border-fuchsia-400/25 bg-gradient-to-br from-fuchsia-400/20 to-cyan-400/10 p-6 backdrop-blur-xl md:p-10"
       style={{ backgroundColor: 'rgba(5, 7, 20, 0.55)' }}
     >
+      {/* animated shine */}
+      <div className="pointer-events-none absolute -inset-1 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 transition-all duration-700 group-hover:translate-x-0 group-hover:opacity-20" />
+
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="block text-xs uppercase tracking-wider text-fuchsia-200/80">Name</label>
@@ -70,9 +73,9 @@ export default function ContactPanel() {
         <p className="text-sm text-fuchsia-200/80">{status}</p>
       </div>
 
-      {/* holographic ring */}
-      <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full border border-fuchsia-300/30" style={{ boxShadow: '0 0 60px rgba(217,70,239,0.25)' }} />
-      <div className="pointer-events-none absolute -bottom-10 -right-10 h-40 w-40 rounded-full border border-cyan-300/30" style={{ boxShadow: '0 0 60px rgba(34,211,238,0.25)' }} />
+      {/* holographic rings */}
+      <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 animate-pulse rounded-full border border-fuchsia-300/30" style={{ boxShadow: '0 0 60px rgba(217,70,239,0.25)' }} />
+      <div className="pointer-events-none absolute -bottom-10 -right-10 h-40 w-40 animate-pulse rounded-full border border-cyan-300/30" style={{ boxShadow: '0 0 60px rgba(34,211,238,0.25)' }} />
     </motion.form>
   );
 }

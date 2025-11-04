@@ -10,6 +10,8 @@ export default function HoloSection({ id, title, accent = 'cyan', children }) {
 
   return (
     <section id={id} className="relative mx-auto max-w-7xl px-6 py-24">
+      {/* moving highlight bar */}
+      <div className="pointer-events-none absolute left-0 right-0 top-16 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
       <motion.div
         initial={{ opacity: 0, y: 40, rotateX: -10 }}
         whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -23,6 +25,15 @@ export default function HoloSection({ id, title, accent = 'cyan', children }) {
       >
         {/* floating grid */}
         <div className="pointer-events-none absolute inset-0 opacity-20 [background:radial-gradient(circle_at_1px_1px,rgba(180,220,255,0.2)_1px,transparent_1px)] [background-size:20px_20px]" />
+
+        {/* subtle animated diagonal sheen */}
+        <div className="pointer-events-none absolute -inset-1 opacity-10" style={{
+          backgroundImage: 'linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.2) 20%, transparent 40%)',
+          backgroundSize: '200% 100%',
+          animation: 'sheen 7s linear infinite'
+        }} />
+
+        <style>{`@keyframes sheen { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }`}</style>
 
         <div className="relative z-10">
           <h2

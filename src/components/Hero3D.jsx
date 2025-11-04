@@ -54,6 +54,28 @@ export default function Hero3D() {
           'radial-gradient(1.2px 1.2px at 85% 20%, rgba(255,255,255,0.6) 50%, transparent 51%)'
       }} />
 
+      {/* Futuristic HUD overlays */}
+      <div className="pointer-events-none absolute inset-0">
+        {/* scanlines */}
+        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'repeating-linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.5) 1px, transparent 2px, transparent 6px)' }} />
+        {/* vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(0,0,0,0.55))]" />
+        {/* corner brackets */}
+        <div className="absolute left-6 top-6 h-8 w-8 border-l-2 border-t-2 border-cyan-300/70" />
+        <div className="absolute right-6 top-6 h-8 w-8 border-r-2 border-t-2 border-cyan-300/70" />
+        <div className="absolute bottom-6 left-6 h-8 w-8 border-b-2 border-l-2 border-cyan-300/70" />
+        <div className="absolute bottom-6 right-6 h-8 w-8 border-b-2 border-r-2 border-cyan-300/70" />
+      </div>
+
+      {/* Holographic grid floor */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-64 origin-bottom" style={{
+        transform: 'perspective(800px) rotateX(60deg)',
+        backgroundImage: 'linear-gradient(rgba(34,211,238,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.18) 1px, transparent 1px)',
+        backgroundSize: '40px 40px',
+        backgroundPosition: 'center',
+        boxShadow: '0 -40px 80px rgba(56,189,248,0.15) inset'
+      }} />
+
       {/* Content overlay */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 text-center">
         <motion.h1
@@ -90,6 +112,17 @@ export default function Hero3D() {
           >
             {soundOn ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
           </button>
+        </motion.div>
+
+        {/* Small HUD chip */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mt-6 rounded-md border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-[11px] text-cyan-200 backdrop-blur"
+          style={{ fontFamily: 'IBM Plex Mono, ui-monospace' }}
+        >
+          SYSTEM ONLINE • v1.0 • SYNTH LINKED
         </motion.div>
       </div>
 
